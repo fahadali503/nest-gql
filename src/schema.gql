@@ -1,0 +1,53 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""User GQL"""
+type User {
+  _id: String!
+  fullName: String!
+  email: String!
+  createdAt: String!
+  posts: [Post!]!
+  updatedAt: String!
+}
+
+type Post {
+  _id: String!
+  title: String!
+  body: String!
+  user: User!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Auth {
+  token: String!
+  user: User!
+}
+
+type Query {
+  getAllUsers: [User!]!
+  login(email: String!, password: String!): Auth
+  me: User!
+}
+
+type Mutation {
+  createUser(data: CreateUserInputType!): User
+  createPost(data: CreatePostInput!): Post!
+}
+
+input CreateUserInputType {
+  fullName: String!
+  email: String!
+  password: String!
+}
+
+input CreatePostInput {
+  title: String!
+  body: String!
+}
+
+type Subscription {
+  postAdded: Post!
+}
